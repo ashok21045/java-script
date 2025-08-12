@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addition of numbers</title>
+</head>
+
+<body>
+    <fieldset>
+        <form action="">
+            <label for="num1">First Number:</label>
+            <input type="number" id="num1" placeholder="enter your number" /> <br><br>
+            <label for="num2">Second Number:</label>
+            <input type="number" id="num2" placeholder="enter your number" /> <br><br>
+
+            <input type="radio" value="sum" name="operator" id="a" />sum&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" value="Sub" name="operator" id="s" />sub&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" value="mul" name="operator" id="m" />mul&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="radio" value="div" name="operator" id="d" />div&nbsp;&nbsp;&nbsp;&nbsp;
+            <br><br>
+            <input type="button" value="Result" id="result" onclick="calculation()">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset" onclick="res()" value="cancle" id="btn2" /> <br><br>
+            <label for="r">Result:</label>
+            <input type="text" id="r">
+        </form>
+        <h1 id="result"></h1>
+    </fieldset>
+    <script>
+
+        function sum() {
+            let n1 = parseInt(document.getElementById("num1").value);
+            let n2 = parseInt(document.getElementById("num2").value);
+            let addition = n1 + n2;
+            document.getElementById("r").value = addition;
+            document.getElementById("result").innerHTML = "Addition is" + addition;
+        }
+
+        function res() {
+            document.getElementById("result").innerHTML = "";
+
+        }
+
+
+        function sub() {
+            let n1 = parseInt(document.getElementById("num1").value);
+            let n2 = parseInt(document.getElementById("num2").value);
+            let subraction = n1 - n2;
+            document.getElementById("r").value = subraction;
+            document.getElementById("result").innerHTML = "difference is" + subraction;
+        }
+
+
+        function mul() {
+            let n1 = parseInt(document.getElementById("num1").value);
+            let n2 = parseInt(document.getElementById("num2").value);
+            let addition = n1 * n2;
+            document.getElementById("r").value = addition;
+            document.getElementById("result").innerHTML = "Product is" + addition;
+        }
+
+
+        function div() {
+            let n1 = parseInt(document.getElementById("num1").value);
+            let n2 = parseInt(document.getElementById("num2").value);
+
+            let multiple = n1 / n2;
+            document.getElementById("r").value = multiple;
+            document.getElementById("result").innerHTML = "divison is" + multiple;
+        }
+
+        function calculation() {
+            let selected = document.querySelector('input[name="operator"]:checked').value;
+            switch (selected) {
+                case "sum":
+                    sum();
+                    break;
+
+                case "sub":
+                    sub();
+                    break;
+
+                case "mul":
+                    mul();
+                    break;
+
+                case "div":
+                    div();
+                    break;
+                default:
+                    document.getElementById("res").innerHTML = "invalid";
+
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
