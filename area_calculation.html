@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area & Volume Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007BFF;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        input[type="button"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .area-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .area-btn:hover {
+            background-color: #1e7e34;
+        }
+
+        .vol-btn {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .vol-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+            color: green;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Area & Volume Calculator</h2>
+
+        <label for="length">Length:</label>
+        <input type="number" id="length">
+
+        <label for="breadth">Breadth:</label>
+        <input type="number" id="breadth">
+
+        <label for="height">Height:</label>
+        <input type="number" id="height">
+
+        <div class="btn-group">
+            <input type="button" class="area-btn" onclick="calc_area()" value="Rectangle Area">
+            <input type="button" class="vol-btn" onclick="calc_vol()" value="Cuboid Volume">
+        </div>
+
+        <input type="text" id="result" readonly placeholder="Result will appear here">
+    </div>
+
+    <script>
+        function calc_area() {
+            let length = parseFloat(document.getElementById("length").value);
+            let breadth = parseFloat(document.getElementById("breadth").value);
+
+            if (isNaN(length) || isNaN(breadth)) {
+                document.getElementById("result").value = "Please enter valid numbers!";
+                return;
+            }
+
+            let result = length * breadth;
+            document.getElementById("result").value = "Area: " + result;
+        }
+
+        function calc_vol() {
+            let length = parseFloat(document.getElementById("length").value);
+            let breadth = parseFloat(document.getElementById("breadth").value);
+            let height = parseFloat(document.getElementById("height").value);
+
+            if (isNaN(length) || isNaN(breadth) || isNaN(height)) {
+                document.getElementById("result").value = "Please enter valid numbers!";
+                return;
+            }
+
+            let result = length * breadth * height;
+            document.getElementById("result").value = "Volume: " + result;
+        }
+    </script>
+
+</body>
+
+</html>
