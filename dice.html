@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice</title>
+  <style>
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aquamarine;
+      height: 112vh;
+    }
+
+    .dice {
+      background-color: rgb(234, 37, 79);
+      height: 200px;
+      width: 200px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 7px;
+    }
+
+    .circle {
+      background-color: azure;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="mid">
+      <div>
+        <h1>Roll the dice!</h1><br>
+      </div>
+      <div class="dice">
+        <div class="circle"></div>
+        <div class="circle"style="visibility: hidden;"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"style="visibility: hidden;"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"style="visibility: hidden;"></div>
+        <div class="circle"></div>
+      </div>
+      <br><br>
+      <div>
+        <label for="num">Number:</label>
+        <input type="number" id="num" style="width: 70px;" max="6" min="1">
+        &nbsp; <button id="roll" onclick="roll()">Roll</button>
+        <br><br>
+        <h3 id="comment"></h3>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  function roll() {
+
+    // Read input number
+    let num = parseInt(document.getElementById("num").value);
+
+    if(num>6|| num<1 || isNaN(num)){
+      document.getElementById("comment").innerHTML="enter a valid number from 1 to 6";
+    }
+    else{
+
+          document.getElementById("comment").innerHTML="";
+
+    let circles = document.getElementsByClassName("circle");
+
+    // Hide all dots first
+    for (let i = 0; i < circles.length; i++) {
+      circles[i].style.visibility = "hidden";
+    }
+
+    
+
+    // Dice dot patterns
+    let patterns = {
+      1: [4],                 // center
+      2: [0, 8],              // top-left, bottom-right
+      3: [0, 4, 8],           // top-left, center, bottom-right
+      4: [0, 2, 6, 8],        // corners
+      5: [0, 2, 4, 6, 8],     // corners + center
+      6: [0, 2, 3, 5, 6, 8]   // two rows of three
+    };
+
+    // Show only the needed dots
+    if (patterns[num]) {
+      patterns[num].forEach(i => {
+        circles[i].style.visibility = "visible";
+      });
+    }
+  }
+}
+</script>
+
+
+
+
+
+</body>
+
+</html>
